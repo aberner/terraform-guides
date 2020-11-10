@@ -138,6 +138,7 @@ planned_values = {
 				],
 				"tags": {
 					"environment": "staging",
+					"responsible": "your_id",
 				},
 				"timeouts": null,
 				"vm_size":  "Basic_A0",
@@ -343,6 +344,7 @@ resource_changes = {
 				],
 				"tags": {
 					"environment": "staging",
+					"responsible": "your_id",
 				},
 				"timeouts": null,
 				"vm_size":  "Basic_A0",
@@ -635,6 +637,7 @@ raw = {
 						"tags": {
 							"constant_value": {
 								"environment": "staging",
+								"responsible": "your_id",
 							},
 						},
 						"vm_size": {
@@ -821,6 +824,7 @@ raw = {
 						],
 						"tags": {
 							"environment": "staging",
+							"responsible": "your_id",
 						},
 						"timeouts": null,
 						"vm_size":  "Basic_A0",
@@ -1002,6 +1006,7 @@ raw = {
 					],
 					"tags": {
 						"environment": "staging",
+						"responsible": "your_id",
 					},
 					"timeouts": null,
 					"vm_size":  "Basic_A0",
