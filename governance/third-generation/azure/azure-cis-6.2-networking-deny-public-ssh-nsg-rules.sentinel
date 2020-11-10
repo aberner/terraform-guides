@@ -15,17 +15,13 @@ getNetworkSecurityGroupCompliance = func(groups, port) {
 	for groups as _, group {
 		for group.change.after.security_rule as sr {
 		
-			print("input portrange: ",sr.destination_port_range, ", prefix: ",sr.source_address_prefix) 
-			
 			if sr.destination_port_range is "*" or sr.destination_port_range is port {
 				if sr.source_address_prefix in restricted_source_address_prefixes {
-					print("found hit: prefix: ", sr.source_address_prefix, ", name: ", sr.name)
 					mapSecurityRules[sr.name] = sr
 				}
 			} else if sr.destination_port_range matches "-" {
 				listPortRange = strings.split(sr.destination_port_range, "-")
 				if int(listPortRange[0]) < int(port) and int(listPortRange[1]) > int(port) {
-					print("found hit - prefix: ", sr.source_address_prefix, ", name: ", sr.name)
 					mapSecurityRules[sr.name] = sr
 				}
 			}
