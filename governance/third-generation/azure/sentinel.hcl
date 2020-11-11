@@ -22,7 +22,7 @@ policy "restrict-app-service-to-https" {
 
 policy "restrict-publishers-of-current-vms" {
     source = "./restrict-publishers-of-current-vms.sentinel"
-    enforcement_level = "advisory"
+    enforcement_level = "soft-mandatory"
 }
 
 policy "restrict-vm-size" {
