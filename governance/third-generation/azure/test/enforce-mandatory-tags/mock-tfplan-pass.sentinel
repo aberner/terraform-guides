@@ -832,6 +832,68 @@ raw = {
 					},
 				},
 				{
+					"address":        "azurerm_linux_virtual_machine.linux_demo",
+					"mode":           "managed",
+					"name":           "linux_demo",
+					"provider_name":  "azurerm",
+					"schema_version": 0,
+					"type":           "azurerm_linux_virtual_machine",
+					"values": {
+						"additional_capabilities":          [],
+						"boot_diagnostics":                 [],
+						"delete_data_disks_on_termination": true,
+						"delete_os_disk_on_termination":    true,
+						"location":                         "eastus",
+						"name":                             "sehangout-azurevmdemo-vm",
+						"os_profile": [
+							{
+								"admin_password": "Password1234!",
+								"admin_username": "testadmin",
+								"computer_name":  "hostname",
+							},
+						],
+						"os_profile_linux_config": [
+							{
+								"disable_password_authentication": false,
+								"ssh_keys":                        [],
+							},
+						],
+						"os_profile_secrets":        [],
+						"os_profile_windows_config": [],
+						"plan": [],
+						"primary_network_interface_id": null,
+						"proximity_placement_group_id": null,
+						"resource_group_name":          "sehangout-azurevmdemo-resources",
+						"storage_image_reference": [
+							{
+								"id":        "",
+								"offer":     "UbuntuServer",
+								"publisher": "Canonical",
+								"sku":       "16.04-LTS",
+								"version":   "latest",
+							},
+						],
+						"storage_os_disk": [
+							{
+								"caching":                   "ReadWrite",
+								"create_option":             "FromImage",
+								"image_uri":                 null,
+								"managed_disk_type":         "Standard_LRS",
+								"name":                      "myosdisk1",
+								"vhd_uri":                   null,
+								"write_accelerator_enabled": false,
+							},
+						],
+						"tags": {
+							"environment": "staging",
+							"responsible": "your_id",
+						},
+						"timeouts": null,
+						"vm_size":  "Basic_A0",
+						"zones":    null,
+					},
+				},
+				{
 					"address":        "azurerm_virtual_network.main",
 					"mode":           "managed",
 					"name":           "main",
