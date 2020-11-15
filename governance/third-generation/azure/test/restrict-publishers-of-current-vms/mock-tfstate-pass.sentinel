@@ -101,8 +101,8 @@ resources = {
 			"virtual_network_name": "sehangout-azurevmdemo-network",
 		},
 	},
-	"azurerm_virtual_machine.demo": {
-		"address": "azurerm_virtual_machine.demo",
+	"azurerm_linux_virtual_machine.demo": {
+		"address": "azurerm_linux_virtual_machine.demo",
 		"depends_on": [
 			"azurerm_network_interface.main",
 			"azurerm_resource_group.main",
@@ -116,7 +116,7 @@ resources = {
 		"name":           "demo",
 		"provider_name":  "azurerm",
 		"tainted":        false,
-		"type":           "azurerm_virtual_machine",
+		"type":           "azurerm_linux_virtual_machine",
 		"values": {
 			"additional_capabilities":          [],
 			"availability_set_id":              null,

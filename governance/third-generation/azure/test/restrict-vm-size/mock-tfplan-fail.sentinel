@@ -79,8 +79,8 @@ planned_values = {
 				"virtual_network_name": "sehangout-azurevmdemo-network",
 			},
 		},
-		"azurerm_virtual_machine.demo": {
-			"address":        "azurerm_virtual_machine.demo",
+		"azurerm_linux_virtual_machine.demo": {
+			"address":        "azurerm_linux_virtual_machine.demo",
 			"depends_on":     [],
 			"deposed_key":    "",
 			"index":          null,
@@ -89,7 +89,7 @@ planned_values = {
 			"name":           "demo",
 			"provider_name":  "azurerm",
 			"tainted":        false,
-			"type":           "azurerm_virtual_machine",
+			"type":           "azurerm_linux_virtual_machine",
 			"values": {
 				"additional_capabilities":          [],
 				"boot_diagnostics":                 [],
@@ -390,7 +390,7 @@ resource_changes = {
 		"module_address": "",
 		"name":           "demo",
 		"provider_name":  "azurerm",
-		"type":           "azurerm_virtual_machine",
+		"type":           "azurerm_linux_virtual_machine",
 	},
 	"azurerm_virtual_network.main": {
 		"address": "azurerm_virtual_network.main",
