@@ -9,20 +9,32 @@ import "tfplan-functions" as plan
 
 # List of mandatory tags
 mandatory_tags = ["environment","responsible"]
-# List of resources tags
-resource_tags = ["azurerm_virtual_machine","azurerm_linux_virtual_machine"]
-# Get all Azure VMs
-allAzureVMs = plan.find_resources("azurerm_virtual_machine")
 
-# Filter to Azure VMs with violations
-# Warnings will be printed for all violations since the last parameter is true
+# Filter azurerm_virtual_machine with invalid mandatory_tags
+# But don't count null node_count as invalid
 violatingAzureVirtualVMs = plan.filter_attribute_not_contains_list(plan.find_resources("azurerm_virtual_machine"),"tags", mandatory_tags, true)
-violatingAzureLinuxVirtualVMs = plan.filter_attribute_not_contains_list(plan.find_resources("azurerm_linux_virtual_machine"),"tags", mandatory_tags, true)
-
-
-
-# Main rule
-main = rule {
-  (length(violatingAzureVirtualVMs["messages"]) is 0) and (length(violatingAzureLinuxVirtualVMs["messages"]) is 0)
+violatingAzureVirtualVMs_count = 0
+for violatingAzureVirtualVMs["messages"] as address, message {
+  if message not contains "null" {
+    print(message)
+    violatingAzureVirtualVMs_count += 1
+  }
 }
 
+# Filter azurerm_linux_virtual_machine with invalid mandatory_tags
+# But don't count null max_count as invalid
+violatingAzureLinuxVirtualVMs = plan.filter_attribute_not_contains_list(plan.find_resources("azurerm_linux_virtual_machine"),"tags", mandatory_tags, true)
+violatingAzureLinuxVirtualVMs_count = 0
+for violatingAzureLinuxVirtualVMs["messages"] as address, message {
+  if message not contains "null" {
+    print(message)
+    violatingAzureLinuxVirtualVMs_count += 1
+  }
+}
+
+# Main rule
+validated = violatingAzureVirtualVMs_count is 0 and
+            violatingAzureLinuxVirtualVMs_count is 0 
+main = rule {
+  validated
+}
