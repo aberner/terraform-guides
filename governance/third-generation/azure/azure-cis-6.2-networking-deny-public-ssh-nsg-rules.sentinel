@@ -17,7 +17,7 @@ getNetworkSecurityGroupCompliance = func(groups, port) {
 		
 			if sr.destination_port_range is "*" or sr.destination_port_range is port {
 				if sr.source_address_prefix in restricted_source_address_prefixes {
-					print("CIS 6.2: failed (restriced prefixes): ",sr.name, " - ", sr)
+					print("CIS 6.2: failed, resource: ",sr.name, " following address prefix not allowed: ", sr.source_address_prefix)
 					mapSecurityRules[sr.name] = sr
 				}
 			} else if sr.destination_port_range matches "-" {
